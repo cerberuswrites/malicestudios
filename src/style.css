@@ -24,36 +24,9 @@
 }
 
 @font-face {
-    font-family: 'Mary Jane Cavazos';
-    src: url('MaryJaneCavazos.woff2') format('woff2'),
-        url('MaryJaneCavazos.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Mary Jane Olyff';
-    src: url('MaryJaneOlyff.woff2') format('woff2'),
-        url('MaryJaneOlyff.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
     font-family: 'dotty';
     src: url('dotty.woff2') format('woff2'),
         url('dotty.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'iMuch';
-    src: url('iMuchRegular.woff2') format('woff2'),
-        url('iMuchRegular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -73,7 +46,7 @@ body {
   & * { box-sizing:border-box; }
     &::before {
     content:"";
-    background-image:url("/src/bg2.jpg");
+    background-image:url("src/bg2.jpg");
     background-size:cover;
     background-position:center;
     display:block;
@@ -88,7 +61,7 @@ body {
   }
     &::after {
         content:"";
-        background-image:url("/src/noise.webp");
+        background-image:url("src/noise.webp");
         height: 300%;
         width: 300%;
         position: fixed;
@@ -144,7 +117,7 @@ body {
             display:block;
             width:var(--circle-w);
             aspect-ratio: 1;
-            background-image:url("/src/Ellipse 24.png");
+            background-image:url("src/Ellipse 24.png");
             background-size:cover;
             position:absolute;
             top:calc( var(--circle-w) / -2.4);
