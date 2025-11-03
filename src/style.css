@@ -46,7 +46,7 @@ body {
   & * { box-sizing:border-box; }
     &::before {
     content:"";
-    background-image:url("src/bg2.jpg");
+    background-image:url("bg2.jpg");
     background-size:cover;
     background-position:center;
     display:block;
@@ -61,7 +61,7 @@ body {
   }
     &::after {
         content:"";
-        background-image:url("src/noise.webp");
+        background-image:url("noise.webp");
         height: 300%;
         width: 300%;
         position: fixed;
@@ -117,7 +117,7 @@ body {
             display:block;
             width:var(--circle-w);
             aspect-ratio: 1;
-            background-image:url("src/Ellipse 24.png");
+            background-image:url("Ellipse 24.png");
             background-size:cover;
             position:absolute;
             top:calc( var(--circle-w) / -2.4);
