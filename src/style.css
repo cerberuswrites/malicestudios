@@ -1,164 +1,151 @@
 :root {
   --dark:#080808;
   --dark-15:rgba(8,8,8,0.15);
+  --dark-15:rgba(8,8,8,0.25);
   --dark-55:rgba(8,8,8,0.55);
   --light:#fefefe;
   --light-55: rgba(254, 254, 254, 0.55);
   --light-75: rgba(254, 254, 254, 0.75);
   --light-15:rgba(254, 254, 254, 0.15);
+    --light-25:rgba(254, 254, 254, 0.25);
     --light-05:rgba(254, 254, 254, 0.05);
   --light-35:rgba(254, 254, 254, 0.35);
   --offwhite:#f1efe3;
   --red:#CC3D3D;
+  --red-55:rgba(204, 61, 61, 0.25);
   --blue:#3454D1;
 
-  --fontSans: "Chivo",Arial, sans-serif;
+  --fontSans: "BeVietnamPro-Variable",Arial, sans-serif;
   --fontTitle: "dotty", Arial, sans-serif;
 
   --transition:0.75s ease;
   --transitionFaster:0.25s ease-out;
 
-  --fontBase: 16px;
+  --fontBase: 18px;
   --fontSize: clamp(var(--fontBase), 1vw, 20vw);
 
 }
 
+
 @font-face {
-    font-family: 'dotty';
-    src: url('dotty.woff2') format('woff2'),
-        url('dotty.woff') format('woff');
+  font-family: 'BeVietnamPro-Variable';
+  src: url('fonts/BeVietnamPro-Variable.woff2') format('woff2'),
+       url('fonts/BeVietnamPro-Variable.woff') format('woff'),
+       url('fonts/BeVietnamPro-Variable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BeVietnamPro-VariableItalic';
+  src: url('fonts/BeVietnamPro-VariableItalic.woff2') format('woff2'),
+       url('fonts/BeVietnamPro-VariableItalic.woff') format('woff'),
+       url('fonts/BeVietnamPro-VariableItalic.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: italic;
+}
+
+
+@font-face {
+    font-family: 'Mustard';
+    src: url('fonts/Mustard-Medium.woff2') format('woff2'),
+        url('fonts/Mustard-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Alice';
+    src: url('fonts/Alice-Regular.woff2') format('woff2'),
+        url('fonts/Alice-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'WindSong', cursive;
+    src: url('fonts/Windsong.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+}
 body {
   background:#000;
-  font:16px var(--fontSans);
+  font-family: var(--fontSans);
   font-size:var(--fontSize);
-  color:var(--light);
+  color:var(--offwhite);
   margin:0;
-  height: 100vh;
+  height: auto;
   width: 100vw;
-  display: flex;
-  align-items:center;
-  justify-content: center;
+  overflow-x:hidden;
+  overflow-y:auto;
+  
   & * { box-sizing:border-box; }
+  & *::selection { background:var(--red);}
     &::before {
     content:"";
-    background-image:url("bg2.jpg");
+    background-image:url("img/bg2.jpg");
     background-size:cover;
     background-position:center;
     display:block;
     width:100vw;
     height:100%;
-    position: absolute;
+    position: fixed;
     top:0;
-      left:0;
+    left:0;
       z-index: -1;
     opacity:0.2;
-        pointer-events: none;
+    pointer-events: none;
   }
-    &::after {
+     &::after {
         content:"";
-        background-image:url("noise.webp");
-        height: 300%;
-        width: 300%;
+        background-image:url("img/noise.webp");
+        height: 100%;
+        width: 100%;
         position: fixed;
-        opacity:0.05;
-        animation: animateGrain 8s steps(10) infinite;
+        opacity:0.15;
         top:0;
         left:0;
         z-index:20;
         pointer-events:none;
+      mix-blend-mode: soft-light;
   }
 }
 
 
 .wrapper {
-  --circle-w:30vw;
-  --border-opac:0.15;
   margin:0 auto;
   display: flex;
   align-items:center;
   justify-content: center;
   position:relative;
   flex-direction: column;
-    width:fit-content;
-    height:fit-content;
-    & h1 {
-        font-size:96px;
-        font-family:"dotty";
-        font-weight:300;
-        letter-spacing: 5%;
-        margin:0;
-        width:fit-content;
-        height:fit-content;
-        text-align:left;
-        display:block;
-        padding:16px 0 8px calc( var(--circle-w) / 3);
-        line-height:1;
-        text-shadow:-4px -2px 4px var(--dark-15);
-        &::before {
-            content:"";
-            width:calc( 100% -  var(--circle-w) * .66 );
-            height:1px;
-            display:block;
-            background:var(--light);
-            margin-left:calc( var(--circle-w) * .66);
-            position: absolute;
-            top:-32px;
-            left:0;
-            opacity: var(--border-opac);
-            box-shadow:0 0 4px var(--light);
-        }
-         &::after {
-            content:"";
-            display:block;
-            width:var(--circle-w);
-            aspect-ratio: 1;
-            background-image:url("Ellipse 24.png");
-            background-size:cover;
-            position:absolute;
-            top:calc( var(--circle-w) / -2.4);
-             left:calc( var(--circle-w) * -.15);
-            z-index: -1;
-        }
-    }
-  
+  width:100%;
+  max-width:900px;
+  min-width:600px;
+  height:auto;
 }
 
-.coming-soon {
-    font-family:"Lekton";
-    text-transform:uppercase;
-    letter-spacing: 10%;
-    font-weight:300;
-    font-size:24px;
-    line-height: 1;
-    text-align:right;
-    width:100%;
-    padding: 16px 8px 0 8px;
-    display:flex;
-    align-items:center;
-    justify-content: space-between;
-    white-space: nowrap;
-    gap:3%;
-    color:var(--light-55);
-    &::before,
-    &::after {
-        content:"";
-        width:100%;
-        height:1px;
-        background:var(--light);
-        margin-left:calc( var(--circle-w) * .33);
-        opacity: var(--border-opac);
-        box-shadow:0 0 4px var(--light);
-    }
-    &::after {
-        width:10%;
-        margin:unset;
-    }
+
+.wrapper section {
+  display:block;
+  height:100vh;
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  line-height:1.8;
 }
+
 
 @keyframes animateGrain{
   0%, 100% { transform:translate(0, 0) }
@@ -172,4 +159,809 @@ body {
   80%{ transform:translate(-15%,-20%) }
   90%{ transform:translate(-5%,-10%) }
   100%{ transform:translate(-15%,-20%) }
+}
+
+
+
+
+
+/* ============================
+* HEADER 
+============================ */
+
+
+.wrapper h1 {
+  --w:450px;
+  font-size:96px;
+  font-size:clamp(64px, 87px, 7vw);
+  font-weight:700;
+  letter-spacing: 1%;
+  margin:0;
+  width:fit-content;
+  height:fit-content;
+  text-align:left;
+  display:flex;
+  align-items:center;
+  line-height:1;
+  line-height:1;
+  gap:.15em;
+  transform:scale(1);
+  text-shadow:-2px -1px 12px var(--dark-15);
+  position: relative;
+  z-index: -1;
+  &::before {
+    content:"";
+    display:block;
+    background:url("img/logo.webp");
+    width:96px;
+    height:96px;
+    background-size:contain;
+    background-position: center;
+    background-repeat:no-repeat;
+    filter:drop-shadow(0 0 12px var(--light-15));
+  }
+    &::after {
+    content:"";
+    display:block;
+    width:var(--circle-w);
+    width:var(--w);
+    aspect-ratio: 1;
+    background-image:url("img/ellipse.png");
+    background-size:cover;
+    position:fixed;
+    z-index: -1;
+      left:calc( var(--w) * -0.35);
+      top:calc( var(--w) * -0.45);
+      z-index: -1;
+  }
+}
+
+/* ============================
+* GRID BACKGROUND
+============================ */
+
+.grid-bg {
+    z-index: -1;
+  position: relative;
+  & .grid-1,
+  & .grid-2 {
+    --c1:rgba(0,0,0,0.15);
+    --c2:rgba(0,0,0,0.5);
+    width:100vw;
+    height:100vh;
+    position: fixed;
+    top:0;
+    left:0;
+    pointer-events: none;
+    background-size:60%;
+    background-position:150% 150%;
+    background-repeat:repeat;
+    mask-image:radial-gradient(circle at 25% 75%, var(--c1), transparent 45%,  var(--c2));
+    mask-size:100% 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' viewBox='0 0 800 800' opacity='0.36' width='800' height='800'%3E%3Cg stroke-width='0.5' stroke='%23f1efe3ff' fill='none'%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='0' y='0'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='66.66666666666667' y='0'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='133.33333333333334' y='0'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='200' y='0'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='266.6666666666667' y='0'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='333.33333333333337' y='0'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='400.00000000000006' y='0'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='466.66666666666674' y='0'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='533.3333333333334' y='0'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='600' y='0'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='666.6666666666666' y='0'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='733.3333333333333' y='0'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='799.9999999999999' y='0'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='0' y='66.66666666666667'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='66.66666666666667' y='66.66666666666667'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='133.33333333333334' y='66.66666666666667'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='200' y='66.66666666666667'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='266.6666666666667' y='66.66666666666667'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='333.33333333333337' y='66.66666666666667'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='400.00000000000006' y='66.66666666666667'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='466.66666666666674' y='66.66666666666667'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='533.3333333333334' y='66.66666666666667'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='600' y='66.66666666666667'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='666.6666666666666' y='66.66666666666667'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='733.3333333333333' y='66.66666666666667'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='799.9999999999999' y='66.66666666666667'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='0' y='133.33333333333334'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='66.66666666666667' y='133.33333333333334'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='133.33333333333334' y='133.33333333333334'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='200' y='133.33333333333334'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='266.6666666666667' y='133.33333333333334'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='333.33333333333337' y='133.33333333333334'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='400.00000000000006' y='133.33333333333334'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='466.66666666666674' y='133.33333333333334'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='533.3333333333334' y='133.33333333333334'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='600' y='133.33333333333334'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='666.6666666666666' y='133.33333333333334'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='733.3333333333333' y='133.33333333333334'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='799.9999999999999' y='133.33333333333334'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='0' y='200'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='66.66666666666667' y='200'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='133.33333333333334' y='200'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='200' y='200'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='266.6666666666667' y='200'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='333.33333333333337' y='200'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='400.00000000000006' y='200'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='466.66666666666674' y='200'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='533.3333333333334' y='200'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='600' y='200'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='666.6666666666666' y='200'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='733.3333333333333' y='200'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='799.9999999999999' y='200'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='0' y='266.6666666666667'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='66.66666666666667' y='266.6666666666667'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='133.33333333333334' y='266.6666666666667'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='200' y='266.6666666666667'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='266.6666666666667' y='266.6666666666667'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='333.33333333333337' y='266.6666666666667'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='400.00000000000006' y='266.6666666666667'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='466.66666666666674' y='266.6666666666667'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='533.3333333333334' y='266.6666666666667'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='600' y='266.6666666666667'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='666.6666666666666' y='266.6666666666667'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='733.3333333333333' y='266.6666666666667'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='799.9999999999999' y='266.6666666666667'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='0' y='333.33333333333337'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='66.66666666666667' y='333.33333333333337'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='133.33333333333334' y='333.33333333333337'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='200' y='333.33333333333337'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='266.6666666666667' y='333.33333333333337'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='333.33333333333337' y='333.33333333333337'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='400.00000000000006' y='333.33333333333337'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='466.66666666666674' y='333.33333333333337'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='533.3333333333334' y='333.33333333333337'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='600' y='333.33333333333337'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='666.6666666666666' y='333.33333333333337'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='733.3333333333333' y='333.33333333333337'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='799.9999999999999' y='333.33333333333337'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='0' y='400.00000000000006'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='66.66666666666667' y='400.00000000000006'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='133.33333333333334' y='400.00000000000006'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='200' y='400.00000000000006'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='266.6666666666667' y='400.00000000000006'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='333.33333333333337' y='400.00000000000006'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='400.00000000000006' y='400.00000000000006'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='466.66666666666674' y='400.00000000000006'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='533.3333333333334' y='400.00000000000006'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='600' y='400.00000000000006'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='666.6666666666666' y='400.00000000000006'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='733.3333333333333' y='400.00000000000006'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='799.9999999999999' y='400.00000000000006'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='0' y='466.66666666666674'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='66.66666666666667' y='466.66666666666674'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='133.33333333333334' y='466.66666666666674'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='200' y='466.66666666666674'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='266.6666666666667' y='466.66666666666674'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='333.33333333333337' y='466.66666666666674'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='400.00000000000006' y='466.66666666666674'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='466.66666666666674' y='466.66666666666674'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='533.3333333333334' y='466.66666666666674'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='600' y='466.66666666666674'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='666.6666666666666' y='466.66666666666674'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='733.3333333333333' y='466.66666666666674'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='799.9999999999999' y='466.66666666666674'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='0' y='533.3333333333334'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='66.66666666666667' y='533.3333333333334'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='133.33333333333334' y='533.3333333333334'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='200' y='533.3333333333334'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='266.6666666666667' y='533.3333333333334'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='333.33333333333337' y='533.3333333333334'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='400.00000000000006' y='533.3333333333334'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='466.66666666666674' y='533.3333333333334'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='533.3333333333334' y='533.3333333333334'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='600' y='533.3333333333334'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='666.6666666666666' y='533.3333333333334'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='733.3333333333333' y='533.3333333333334'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='799.9999999999999' y='533.3333333333334'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='0' y='600'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='66.66666666666667' y='600'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='133.33333333333334' y='600'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='200' y='600'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='266.6666666666667' y='600'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='333.33333333333337' y='600'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='400.00000000000006' y='600'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='466.66666666666674' y='600'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='533.3333333333334' y='600'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='600' y='600'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='666.6666666666666' y='600'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='733.3333333333333' y='600'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='799.9999999999999' y='600'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='0' y='666.6666666666666'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='66.66666666666667' y='666.6666666666666'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='133.33333333333334' y='666.6666666666666'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='200' y='666.6666666666666'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='266.6666666666667' y='666.6666666666666'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='333.33333333333337' y='666.6666666666666'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='400.00000000000006' y='666.6666666666666'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='466.66666666666674' y='666.6666666666666'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='533.3333333333334' y='666.6666666666666'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='600' y='666.6666666666666'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='666.6666666666666' y='666.6666666666666'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='733.3333333333333' y='666.6666666666666'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='799.9999999999999' y='666.6666666666666'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='0' y='733.3333333333333'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='66.66666666666667' y='733.3333333333333'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='133.33333333333334' y='733.3333333333333'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='200' y='733.3333333333333'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='266.6666666666667' y='733.3333333333333'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='333.33333333333337' y='733.3333333333333'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='400.00000000000006' y='733.3333333333333'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='466.66666666666674' y='733.3333333333333'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='533.3333333333334' y='733.3333333333333'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='600' y='733.3333333333333'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='666.6666666666666' y='733.3333333333333'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='733.3333333333333' y='733.3333333333333'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='799.9999999999999' y='733.3333333333333'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='0' y='799.9999999999999'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='66.66666666666667' y='799.9999999999999'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='133.33333333333334' y='799.9999999999999'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='200' y='799.9999999999999'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='266.6666666666667' y='799.9999999999999'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='333.33333333333337' y='799.9999999999999'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='400.00000000000006' y='799.9999999999999'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='466.66666666666674' y='799.9999999999999'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='533.3333333333334' y='799.9999999999999'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='600' y='799.9999999999999'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='666.6666666666666' y='799.9999999999999'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='733.3333333333333' y='799.9999999999999'%3E%3C/rect%3E%3Crect width='66.66666666666667' height='66.66666666666667' x='799.9999999999999' y='799.9999999999999'%3E%3C/rect%3E%3C/g%3E%3C/svg%3E");
+  }
+  & .grid-2 {
+    opacity:0;
+    mask-image:radial-gradient(circle at 50% 50%, var(--c2), var(--c1) 35%,  transparent);
+    mask-size:100% 100%;
+  }
+}
+
+/* ============================
+* ABOUT (LANDING)
+============================ */
+
+@keyframes rotateStar {
+  0% { transform: perspective(900px) rotateX(30deg) rotateY(-30deg); }
+  50%{ transform:perspective(900px) rotateX(30deg) rotateY(-30deg) rotateZ(90deg); }
+  100% { transform: perspective(900px) rotateX(30deg) rotateY(-30deg) rotateZ(180deg); }
+}
+
+section#main .section-inner {
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  gap:1em;
+  z-index: 3;
+  position: relative;
+  &::before {
+    --w:240px;
+    content:"";
+    display:block;
+    width:var(--w);
+    aspect-ratio:1;
+    height:auto;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' viewBox='0 0 2000 2000'%3E%3Cg%3E%3Cg fill='%23cc3d3d' id='star'%3E%3Cpath d='M 500 500 C 1000 1000 1000 1000 2000 0 C 1000 1000 1000 1000 1500 1500 C 1000 1000 1000 1000 0 2000 C 1000 1000 1000 1000 500 500' stroke-linecap='round' stroke-linejoin='round'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' viewBox='0 0 2000 2000'%3E%3Cg%3E%3Cg fill='%23cc3d3d' stroke-width='6' stroke='%23cc3d3d' id='star'%3E%3Cpath d='M 500 500 C 1000 1000 1000 1000 1500 500 C 1000 1000 1000 1000 1500 1500 C 1000 1000 1000 1000 500 1500 C 1000 1000 1000 1000 500 500' stroke-linecap='round' stroke-linejoin='round'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-size:cover;
+    animation: 12s linear infinite rotateStar;
+    position: absolute;
+    transform: perspective(900px) rotateX(60deg) rotateY(-30deg);
+    pointer-events: none;
+    left:calc( var(--w) * -0.45 );
+    top:calc( var(--w) * -0.45 );
+    z-index: -1;
+    filter:drop-shadow(0 0 8px var(--red));
+    opacity:0.5;
+  }
+  & > div {
+    margin-top:48px;
+    & > b {
+      display:block;
+      font-size:24px;
+    }
+    & > p > b:first-of-type {
+      font-size:1.1em;
+    }
+    & > p:nth-of-type(2) {
+      text-align:center;
+      padding:0 24px;
+      margin-top:64px;
+      & a {
+        color:var(--offwhite);
+        text-decoration: none;
+        text-shadow:0px 0px 4px var(--dark-25);
+        display: inline-block;
+        transform:scale(1);
+        transition:0.5s ease;
+        &::before {
+          --w2:1em;
+          content:"";
+          transition:0.5s ease;
+          display:block;
+          width:calc(var(--w2) * 2);
+          height:auto;
+          aspect-ratio:1.5;
+          background:var(--red);
+          position: absolute;
+          left:calc(50% - var(--w2));
+          top:15%;
+          z-index:-1;
+          border-radius:100%;
+          filter:blur(12px);
+          pointer-events: none;
+          opacity:0.35;
+         }
+        &:hover {
+          text-shadow:0px 0px 4px var(--light-25);
+          &::before { opacity:1; }
+        }
+      }
+    }
+  }
+}
+
+
+/* ============================
+* SCROLL DOWN BTN
+============================ */
+
+.scrollbtn {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  gap:12px;
+  flex-direction: column;
+  width:100%;
+  height:fit-content;
+  font-size:13px;
+  text-transform: lowercase;
+  letter-spacing: 2%;
+  position: fixed;
+  bottom:0;
+  left:50%;
+  padding-bottom:2vh;
+  color:transparent;
+  transform:translateX(-50%);
+  transition:0.5s ease;
+  z-index:4;
+  cursor: pointer;
+  text-align:center;
+  pointer-events: none;
+  opacity:0;
+  &::after {
+    content:"";
+    --s: 2px; 
+    display:block;
+    width: 16px;
+    aspect-ratio: 5/3;
+    clip-path: polygon(0 0,0 var(--s),50% 100%,100% var(--s),100% 0,50% calc(100% - var(--s)));
+    background: var(--offwhite);
+    animation: 2s infinite animateScrollBtn;
+    transition:0.5s ease;
+    opacity:0.25;
+    z-index: 2;
+    position: relative;
+  }
+  &::before {
+    --w:200px;
+    content:"";
+    background:var(--red);
+    width:var(--w);
+    height:auto;
+    aspect-ratio: 1;
+    display:block;
+    border-radius:100%;
+    position: absolute;
+    filter:blur(40px);
+    bottom:calc( var(--w) * -0.65);
+    z-index: -2;
+    transform:scale(0.8);
+    transition:0.5s ease;
+    opacity:0.1;
+  }
+}
+
+@keyframes animateScrollBtn {
+  0%, 100% { transform: translateY(0); }
+  50%{ transform:translateY(50%); }
+}
+
+/* ============================
+* SCROLL BTN LINK
+============================ */
+
+div.scrollto {
+  display: block;
+  width:100vw;
+  position: fixed;
+  bottom:0;
+  padding:2vh 0;
+  color:transparent;
+  z-index:6;
+  cursor:pointer;
+  &:is([data-target*="preview"]) {
+    z-index:2;
+  }
+  &:is([data-target*="nav"]) {
+    z-index:1;
+  }
+  &:is(.hide) { pointer-events:none; opacity:0; }
+}
+
+
+body:has(.scrollto:hover) {
+  & .scrollbtn {
+    color:var(--offwhite);
+    &::after { opacity:1; }
+    &::before { 
+      opacity:1; 
+      transform:scale(1);
+    }
+  }
+}
+
+body:has( section.visible ) .scrollbtn { opacity:1; }
+body:has( .wrapper.visible ) .scrollbtn { opacity:1; }
+body:has( section#navigation.visible ) .scrollbtn { opacity:0 !important; }
+body:has( section#zugzy-preview.visible ) {
+  & .scrollto[data-target*="preview"] {
+    opacity:0; pointer-events:none;
+  }
+}
+
+
+/* ============================
+* ZUGZY PREVIEW
+============================ */
+
+section#main {
+  z-index:5;
+  & .section-inner { filter:blur(0px); }
+}
+
+
+section#zugzy-preview {
+  /*position:absolute;
+  top:0;
+  left:0;*/
+  opacity:0;
+  transform:scale(0.9);
+  height:150vh;
+  /*padding:25% 0;
+  padding-bottom:25%;*/
+  margin-top:0vh;
+  margin-bottom:15%;
+  scrollbar-width:none;
+  filter:blur(12px);
+  z-index:3;
+  &::-webkit-scrollbar { display:none; }
+  & .section-inner,
+  & .section-inner > div {
+    width:100%;
+    height:100%;
+  }
+  & .section-inner > div {
+    height:100%;
+    display:flex;
+    flex-direction: column;
+    justify-content:flex-start;
+  }
+  & .img-wrapper {
+    width:100%;
+    height:fit-content;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex:0 0 auto;
+    height:100%;
+    justify-content: space-between;
+    opacity:0;
+    & img { max-width:150px; }
+    
+    &:is(.first) {
+      opacity:1;
+      height:25%;
+      justify-content: center;
+      align-items:flex-start;
+      & img { 
+        max-width:140px;
+      }
+    }
+    
+    &:is(.second) {
+      height:30%;
+      padding:0 10% 0 20%;
+      flex-direction: row-reverse;
+      & img { 
+        max-width:130px;
+        transform:rotate(-8deg) ;
+        filter:drop-shadow(6px 9px 8px var(--red-55));
+        &+div { font-family:"Alice"; font-size:1.2em; letter-spacing:5%; }
+      }
+    }
+    
+    &:is(.third) {
+      height:25%;
+      padding:0 20% 0 10%;
+      & img { 
+        max-width:140px;
+        transform:rotate(15deg);
+        filter:drop-shadow(-5px 8px 8px var(--red-55));
+        &+div { margin-top:10%;  font-family:"Alice"; font-size:1.2em; letter-spacing:5%; }
+      }
+    }
+    
+    &:is(.fourth) {
+      height:32%;
+      justify-content: center;
+      align-items:flex-end;
+      & img { 
+        max-width:190px;
+        transform:scaleY(-1);
+        &+div { 
+          position: absolute;
+          font-family:"WindSong";
+          font-size:56px;
+          bottom:-300px;
+          color:var(--red);
+          opacity:0;
+          filter:blur(4px);
+        }
+      }
+    }
+  }
+  
+  & .line {
+    position: absolute;
+    top:5%;
+    left:50%;
+    width:90%;
+    height:100%;
+    z-index: -3;
+    transform: translateX(-50%) scaleX(-1);
+    & svg {
+      width:100%;
+      height:100%;
+      object-fit: fill;
+    }
+  }
+}
+
+/* ============================
+* NAVIGATION
+============================ */
+
+section#navigation {
+  margin-top:300px;
+  & .section-inner div {
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    flex-wrap:wrap;
+    gap:16px;
+    & .navbar {
+      gap:24px;
+      margin-top:-40%;
+      &::before {
+        content:"";
+        display:block;
+        width:1px;
+        background:var(--offwhite);
+        height:140px;
+        transform:rotate(35deg);
+        position: absolute;
+        transition:0.5s ease;
+      }
+      &::after {
+        content:"";
+        display:block;
+        width:500px;
+        height:500px;
+        background-image:url("img/ellipse.png");
+        background-size:120% 120%;
+        position: absolute;
+        z-index: -1;
+        transform: translateY(50px) rotate(225deg);
+        filter:brightness(0.7);
+        transition: 0.5s ease;
+        pointer-events:none;
+    }
+      &:has(a:hover) {
+        &::before,
+        & a:not(:hover) {
+          filter:blur(2px);
+        }
+        & a:not(:hover) {
+          opacity:0.8;
+        }
+        &::after {
+          opacity:1;
+          filter:brightness(1);
+          transform: translateY(40px) rotate(225deg);
+        }
+      }
+      &:has(a:nth-of-type(1):hover) {
+        &::after { transform: translateY(40px) translateX(20px) rotate(195deg); }
+      }
+      &:has(a:nth-of-type(2):hover) {
+        &::after { transform: translateY(40px) translateX(-20px) rotate(250deg);}
+      }
+      }
+      & a {
+        text-decoration:none;
+        color:var(--offwhite);
+        font-weight:100;
+        letter-spacing: 15%;
+        font-size:28px;
+        transition:0.5s ease;
+        transform:scale(0.95);
+        &:hover {
+          text-shadow:0 0 6px var(--offwhite);
+          transform:scale(1);
+        }
+      }
+      & a:nth-of-type(1) {
+        width:100%;
+        text-align:left;
+      }
+      & a:nth-of-type(2) {
+        width:100%;
+        text-align:right;
+      }
+    }
+    
+    & .scrolltop-btn {
+      width:150px;
+      aspect-ratio: 1;
+      text-align:center;
+      transform: scale(0.9);
+      display:flex;
+      align-items:center;
+      justify-content: center;
+      flex-direction: column-reverse;
+      font-size:14px;
+      color:transparent;
+      font-weight:300;
+      cursor:pointer;
+      opacity:0.5;
+      transition:0.5s ease;
+      position: absolute;
+      bottom:5vh;
+      &::before {
+        content:"";
+        display:block;
+        width:100%;
+        height:100%;
+        border:2px solid var(--offwhite);
+        border-radius:100%;
+        background-size:120% 120%;
+        position: absolute;
+        z-index: -1;
+        transform:scale(0.5);
+        opacity:0.5;
+        transition:0.5s ease;
+      }
+      &:hover::before {
+        opacity:.5;
+        transform:scale(0.4);
+        filter:blur(10px);
+      }
+      &:hover::after {
+        opacity:1;transform:scaleY(-1.2) scaleX(0.7) translateY(35px);
+      }
+      &:hover {
+        opacity:1;
+        transform:scale(1);color:var(--offwhite);
+      }
+      &::after {
+      content:"";
+      --s: 3px; 
+      display:block;
+      width: 24px;
+      aspect-ratio: 5/3;
+      clip-path: polygon(0 0,0 var(--s),50% 100%,100% var(--s),100% 0,50% calc(100% - var(--s)));
+      background: var(--offwhite);
+      transition:0.5s ease;
+      z-index: 2;
+        opacity:0.5;
+      position: absolute;
+        transform:scaleY(-1) scaleX(0.8) translateY(2px);
+        
+    }
+    }
+}
+
+
+
+
+/* ============================
+* HEADER NAVIGATION
+============================ */
+
+section#headerbar {
+  height:100px;
+  width:100%;
+  padding:0 32px;
+  position:fixed;
+  top:0;
+  justify-content: space-between;
+  gap:16px;
+  font-weight:300;
+  letter-spacing: 5%;
+  opacity:0.9;
+  transition:0.5s ease;
+  &:hover { opacity:1; }
+  & h1 {
+    font-size:32px;
+    pointer-events: auto;
+    margin-right:auto;
+    & a { 
+    text-decoration: none;
+    color:var(--offwhite);
+    }
+    &::before { width:32px; }
+    &::after { display: none; }
+  }
+  & > a { 
+    text-decoration: none;
+    color:var(--offwhite);
+    font-weight:500;
+    transition:0.5s ease;
+    display:block;
+    transform:scale(1);
+    &::before {
+       --w2:1em;
+      content:"";
+      transition:0.5s ease;
+      display:block;
+      width:calc(var(--w2) * 2);
+      height:auto;
+      aspect-ratio:1.5;
+      background:var(--red);
+      position: absolute;
+      left:calc(50% - var(--w2));
+      top:15%;
+      z-index:-1;
+      border-radius:100%;
+      filter:blur(12px);
+      pointer-events: none;
+      opacity:0.35;
+    }
+    &:hover {
+      text-shadow:0px 0px 4px var(--light-25);
+      &::before { opacity:1; }
+    }
+    &:hover {
+      text-shadow:0 0 6px var(--light-25);
+    }
+  }
+}
+
+
+/* ============================
+* ABOUT
+============================ */
+
+body#about,
+body#games {
+  .grid-1 {
+    opacity:0.25;
+  }
+  .grid-2 { 
+   mask-image:radial-gradient(circle at 70% 90%, var(--c2), var(--c1) 35%,  transparent);
+    mask-size:100% 100%;
+    opacity:.4;
+  }
+}
+
+
+section#about {
+  & .section-inner {
+    transform:scale(1);
+    &::after {
+      --w:400px;
+        content:"";
+        display:block;
+        width:var(--w);
+        height:auto;
+        aspect-ratio:1;
+        background-image:url("img/ellipse.png");
+        background-size:130% 130%;
+        background-position:center 40%;
+        position: absolute;
+        left:calc( var(--w) * -0.5);
+        top:calc( var(--w) * -.5);
+        z-index: -1;
+        opacity:0.3;
+        transition: 0.5s ease;
+        pointer-events:none;
+    }
+  }
+  &::before {
+    content:"";
+    display:block;
+    width:1px;
+    height:45%;
+    background:var(--red);
+    position: absolute;
+    left:7%;
+    top:50%;
+    opacity:.25;
+    background:linear-gradient(to bottom, var(--red-55), var(--red), var(--red-55), transparent);
+  }
+
+  & h2 {
+    color:var(--offwhite);
+    letter-spacing: 5%;
+  }
+   
+  & a { 
+    text-decoration: none;
+    color:var(--offwhite);
+    transition:0.5s ease;
+    transform:scale(1);
+    display:inline-block;
+    font-weight:bold;
+    &::before {
+      --w2:2em;
+      content:"";
+      transition:0.5s ease;
+      display:block;
+      width:calc(var(--w2) * 2);
+      height:calc( var(--fontSize) * 1.5 );
+      aspect-ratio:1.5;
+      background:var(--red);
+      position: absolute;
+      left:calc(50% - var(--w2));
+      top:15%;
+      z-index:-1;
+      border-radius:100%;
+      filter:blur(12px);
+      pointer-events: none;
+      opacity:0.35;
+    }
+    &:hover {
+      text-shadow:0px 0px 4px var(--light-25);
+      &::before { opacity:1; }
+    }
+  }
+  
+}
+
+
+/* ============================
+* GAMES
+============================ */
+
+section#games {
+  & .section-inner > div  {
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    gap:48px;
+    transform:scale(1);
+    &::after {
+      --w:500px;
+        content:"";
+        display:block;
+        width:var(--w);
+        height:auto;
+        aspect-ratio:1;
+        background-image:url("img/ellipse.png");
+        background-size:130% 130%;
+        background-position:center 40%;
+        position: absolute;
+        left:calc( var(--w) * 0.35);
+        top:calc( var(--w) * -.15);
+        z-index: -1;
+        opacity:0.5;
+        transition: 0.5s ease;
+        pointer-events:none;
+    }
+    & > img {
+      --red-55:rgba(204, 61, 61, 0.15);
+      --red-85:rgba(204, 61, 61, 0.55);
+      max-width:350px;
+      border-radius:96px 0px 0 0px;
+      border:1px solid var(--red-55);
+      border-bottom:1px solid var(--red);
+      
+      border: 1px solid transparent;
+      background: padding-box linear-gradient(var(--dark), var(--dark)),
+      border-box linear-gradient(var(--red-85), var(--red-55));
+    }
+    &::before {
+      content:"";
+      display:block;
+      width:1px;
+      height:100%;
+      background:var(--red);
+      position: absolute;
+      left:360px;
+      top:30%;
+      opacity:.25;
+      background:linear-gradient(to bottom, var(--red-55), var(--red), var(--red-55), transparent);
+    }
+    
+    & p {
+      text-align:justify;
+      & > b {
+        font-family:"Mustard";
+        font-size:1.5em;
+        margin:0 18px 0 0;
+      }
+      & a {
+        text-decoration:none;
+        color:var(--offwhite);
+        font-weight:600;
+        display: block;
+        text-align:right;
+        margin-top:32px;
+        display:flex;
+        align-items:center;
+        justify-content: flex-end;
+        gap:4px;
+        transform:scale(1);
+        width:fit-content;
+        margin-left:auto;
+        &::before {
+          --w2:1em;
+          content:"";
+          transition:0.5s ease;
+          display:block;
+          width:calc(var(--w2) * 2);
+          height:calc( var(--fontSize) * 1.5 );
+          aspect-ratio:1.5;
+          background:var(--red);
+          position: absolute;
+          left:calc(55% - var(--w2));
+          top:15%;
+          z-index:-1;
+          border-radius:100%;
+          filter:blur(12px);
+          pointer-events: none;
+          opacity:0.35;
+        }
+        &:hover {
+          text-shadow:0px 0px 4px var(--light-25);
+          &::before { opacity:1; }
+        }
+        & > img { 
+          filter:invert(.9) sepia(.8);
+          width:24px;
+        }
+      }
+    }
+  }
 }
