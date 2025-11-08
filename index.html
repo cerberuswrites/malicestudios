@@ -6,32 +6,96 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MALICE STUDIOS</title>
     <link rel="stylesheet" href="./src/style.css">
-    <link rel="icon" href="./src/favicon1.ico" type="image/x-icon">
-    <!-- FONTS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&family=Lekton:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-
+    <link rel="icon" href="./src/favicon.ico" type="image/x-icon">
 </head>
 <body>
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-  
+  <div class="scrollbtn">scroll</div>
   <div class="wrapper">
 
-    <h1>MALICE STUDIOS</h1>
+    <section id="main">
+      <div class="section-inner">
 
-    <div class="coming-soon">
-        <span>coming soon</span>
-    </div>
+        <h1>MALICE STUDIOS</h1>
+
+        <div>
+        <!-- <b>We make games.</b> -->
+        <p><b>We make games.</b> Currently working on <b>ZUGZWANG</b>, a visual novel about chess, destiny, love, and how they're all the same thing.</p>
+        <p>Wishlist on <a href="https://store.steampowered.com/app/4155660/Zugzwang">Steam</a>. Follow us on <a href="https://www.instagram.com/bymalicestudios/">Instagram</a>.</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section id="zugzy-preview">
+
+      <div class="section-inner">
+
+        <div>
+
+          <div class="img-wrapper first">
+            <img class="queen" src="./src/img/queen-2.png">
+          </div>
+
+          <div class="img-wrapper second">
+            <img class="bishop" src="./src/img/bishop-2.png">
+            <div>Play as White...</div>
+          </div>
+
+          <div class="img-wrapper third">
+            <img class="rook" src="./src/img/rook-2.png">
+            <div>...or as Black.</div>
+          </div>
+
+          <div class="img-wrapper fourth">
+            <img class="knight" src="./src/img/knight-2.png">
+            <div>You lose either way.</div>
+          </div>
+
+          <div class="line">
+            <svg width="1354" height="1934" viewBox="0 0 1354 1934" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path id="line" d="M680.377 0C680.377 192.947 477.991 256.789 656.376 436C852.378 632.909 -165.624 959 24.8764 824C215.376 689 203.377 1222 637.876 1106.5C1072.38 991 1266.38 1416.5 1348.38 1284.5C1430.38 1152.5 286.376 1458 567.876 1563.5C849.376 1669 689.377 1758.5 689.377 1934" stroke="#CC3D3D" stroke-width="4" />
+          </svg>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="navigation">
+
+      <div class="section-inner">
+
+        <div>
+      
+          <div class="navbar">
+            <a href="/about.html" class="navlink">ABOUT</a>
+            <a href="/games.html" class="navlink">GAMES</a>
+          </div>
+
+      <div class="scrolltop-btn">scroll to top</div>
+      </div></div>
+
+    </section>
 
   </div>
     
+  <div class="grid-bg">
+    <div class="grid-1"></div> <div class="grid-2"></div>
+  </div>
 
-<!-- CREDITS FOR WEBSITE: 
-TKTKTKTK
--->
+  <div class="scrollto" data-target="#zugzy-preview">x</div>
+  <div class="scrollto" data-target="#navigation">x</div>
 
-<script src="./src/scripts.js"></script>
+
+<script src="./src/dependencies/jquery-3.7.1.min.js"></script>
+<script src="./src/dependencies/gsap.min.js"></script>
+<script src="./src/dependencies/ScrollTrigger.min.js"></script>
+<script src="./src/dependencies/ScrollSmoother.min.js"></script>
+<script src="./src/dependencies/ScrollToPlugin.min.js"></script>
+<script src="./src/dependencies/DrawSVGPlugin.min.js"></script>
+
+<script src="./src/scripts.js" defer></script>
 
   </body>
 
